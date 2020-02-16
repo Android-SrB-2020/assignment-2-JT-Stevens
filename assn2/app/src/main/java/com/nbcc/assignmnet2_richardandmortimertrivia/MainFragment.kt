@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentController
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.nbcc.assignmnet2_richardandmortimertrivia.databinding.FragmentMainBinding
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 
 /**
  * A simple [Fragment] subclass.
@@ -45,12 +47,6 @@ class MainFragment : Fragment() {
 
         navController = view.findNavController()
 
-        binding.apply {
-            cheatBtn.setOnClickListener{
-                navController.navigate(R.id.action_mainFragment_to_cheatFragment)
-            }
-        }
-
         questionBank = listOf(
             Question(getString(R.string.question_1), false),
             Question(getString(R.string.question_2), true),
@@ -74,9 +70,71 @@ class MainFragment : Fragment() {
             Question(getString(R.string.question_20), true)
         )
 
-        question = questionBank[questionIndex]
+        binding.question = questionBank[questionIndex]
 
+        binding.apply {
+            cheatBtn.setOnClickListener{
+                navController.navigate(MainFragmentDirections.actionMainFragmentToCheatFragment(question!!))
+            }
+
+            nextButton.setOnClickListener{
+                nextQuestion()
+            }
+
+            previousButton.setOnClickListener{
+                previousQuestion()
+            }
+
+            trueButton.setOnClickListener{
+                isTrue()
+            }
+
+            falseButton.setOnClickListener{
+                isFalse()
+            }
+        }
     }
 
+    /**
+     * Changes the text view to the next question.
+     */
+    private fun nextQuestion(){
+        binding.apply {
+            questionIndex++
+            question = questionBank[questionIndex % questionBank.count()]
+        }
+    }
 
+    /**
+     * Changes the tet view to the previous question
+     */
+    private fun previousQuestion(){
+        binding.apply {
+            questionIndex += 19
+            question = questionBank[questionIndex % questionBank.count()]
+        }
+    }
+
+    /**
+     * Shows a Correct or Wrong toast if the answer to the current question is true.
+     */
+    private fun isTrue(){
+        if (question.answer){
+            Toast.makeText(activity, "Correct!", LENGTH_SHORT).show()
+        } else{
+            Toast.makeText(activity, "Wrong!", LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * Shows a Correct or Wrong toast if the answer to the current question is false.
+     */
+    private fun isFalse(){
+        if (!question.answer){
+            Toast.makeText(activity, "Correct!", LENGTH_SHORT).show()
+
+        } else{
+            Toast.makeText(activity, "Wrong!", LENGTH_SHORT).show()
+        }
+    }
 }

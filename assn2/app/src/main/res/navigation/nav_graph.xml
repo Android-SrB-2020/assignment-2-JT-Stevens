@@ -21,7 +21,11 @@
         android:id="@+id/cheatFragment"
         android:name="com.nbcc.assignmnet2_richardandmortimertrivia.CheatFragment"
         android:label="fragment_abount"
-        tools:layout="@layout/fragment_cheat" />
+        tools:layout="@layout/fragment_cheat" >
+        <argument
+            android:name="question"
+            app:argType="com.nbcc.assignmnet2_richardandmortimertrivia.Question" />
+    </fragment>
     <fragment
         android:id="@+id/abountFragment"
         android:name="com.nbcc.assignmnet2_richardandmortimertrivia.AbountFragment"

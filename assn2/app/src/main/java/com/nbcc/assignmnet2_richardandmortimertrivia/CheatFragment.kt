@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.nbcc.assignmnet2_richardandmortimertrivia.databinding.FragmentCheatBinding
 import com.nbcc.assignmnet2_richardandmortimertrivia.databinding.FragmentMainBinding
+import kotlinx.android.synthetic.main.fragment_main.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -19,6 +20,8 @@ class CheatFragment : Fragment() {
 
     private lateinit var binding: FragmentCheatBinding
     private lateinit var navController: NavController
+    private lateinit var question: Question
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,24 @@ class CheatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = view.findNavController()
+
+        var args = CheatFragmentArgs.fromBundle(arguments!!)
+        binding.question = args.question
+
+
+        binding.showAnswer = false
+
+
+        binding.apply {
+            cancelBtn.setOnClickListener {
+                activity!!.onBackPressed()
+            }
+
+            cheatBtn.setOnClickListener {
+                binding.showAnswer = true
+            }
+        }
     }
+
 
 }

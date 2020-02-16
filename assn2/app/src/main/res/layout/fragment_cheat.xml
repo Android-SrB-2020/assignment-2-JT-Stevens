@@ -5,6 +5,15 @@
 
     tools:context=".CheatFragment">
 
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="question"
+            type="com.nbcc.assignmnet2_richardandmortimertrivia.Question" />
+        <variable
+            name="showAnswer"
+            type="java.lang.Boolean" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,13 +21,13 @@
 
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/textView3"
+            android:id="@+id/questionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="175dp"
             android:layout_marginTop="49dp"
             android:layout_marginEnd="177dp"
-            android:text="TextView"
+            android:text="@={question.id}"
             android:textColor="#009688"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,19 +35,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/textView4"
+            android:id="@+id/answerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="175dp"
             android:layout_marginTop="103dp"
             android:layout_marginEnd="177dp"
-            android:text="TextView"
+            android:text="@{question.answer ? @string/trueText : @string/falseText}"
             android:textColor="#E91E63"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:visibility="@{showAnswer ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/questionText" />
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/textView5"
@@ -53,7 +63,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/answerText" />
 
         <Button xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/cheatBtn"

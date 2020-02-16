@@ -1,3 +1,7 @@
 package com.nbcc.assignmnet2_richardandmortimertrivia
 
-data class Question (var Id: String, val answer:Boolean)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Question (var Id: String, var answer:Boolean): Parcelable
