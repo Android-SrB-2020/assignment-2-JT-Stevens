@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.nbcc.assignmnet2_richardandmortimertrivia.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="Richard and Mortimer Quiz"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_abountFragment"
             app:destination="@id/abountFragment" />
@@ -20,8 +20,8 @@
     <fragment
         android:id="@+id/cheatFragment"
         android:name="com.nbcc.assignmnet2_richardandmortimertrivia.CheatFragment"
-        android:label="fragment_abount"
-        tools:layout="@layout/fragment_cheat" >
+        android:label="Cheat?"
+        tools:layout="@layout/fragment_cheat">
         <argument
             android:name="question"
             app:argType="com.nbcc.assignmnet2_richardandmortimertrivia.Question" />
@@ -29,6 +29,6 @@
     <fragment
         android:id="@+id/abountFragment"
         android:name="com.nbcc.assignmnet2_richardandmortimertrivia.AbountFragment"
-        android:label="AbountFragment"
+        android:label="About"
         tools:layout="@layout/fragment_abount" />
 </navigation>

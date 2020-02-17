@@ -34,4 +34,5 @@
     <string name="rickAndMortyPictureDesc">Picture of Rick and Morty Meme</string>
     <string name="trueText">TRUE</string>
     <string name="falseText">FALSE</string>
+    <string name="about_rick_and_morty">About Rick and Morty</string>
 </resources>
